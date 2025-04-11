@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 //handler.all = async function (m) {
 export async function before(m, { conn }) {	
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? this.user.jid : m.sender
-let pp = await this.profilePictureUrl(who, 'image').catch(_ => "https://telegra.ph/file/33bed21a0eaa789852c30.jpg")
+let pp = await this.profilePictureUrl(who, 'image').catch(_ => "")
 		
 global.canalIdGB = ["", "", "", ""]
 global.canalNombreGB = ["I", "", "✨", "✨"]
