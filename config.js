@@ -5,23 +5,24 @@ import fs from 'fs'
 import cheerio from 'cheerio'
 import fetch from 'node-fetch'
 import axios from 'axios'
-import moment from 'moment-timezone' ; 
-import { tr, translateText } from './lib/_checkLang.js';
+import moment from 'moment-timezone' 
 
 //---------[ Añada los numeros a ser Propietario/a ]---------
 
-global.owner = [['5214774444444', 'ＰＲＯＰＩＥＴＡＲＩＯ', true], ['593968585383'], ['13192021702'], ['5217411126626'], ['5213347320542'], ['595986505424'], ['5219999699999'], ['5217441452981'], ['523482800300'], ['573007487856'], ['5217773342977'], ['573008499604'], ['5492266613038']]
+global.owner = [['5215649707515', 'ＰＲＯＰＩＥＴＡＲＩＯ', true]]
 global.mods = []
 global.prems = []
 
 //BETA: Si quiere evitar escribir el número que será bot en la consola, agregué desde aquí entonces:
+//Sólo aplica para opción 2 (ser bot con código de texto de 8 digitos)
 global.botNumberCode = "" //Ejemplo: +59309090909
 global.confirmCode = "" 
-global.gataJadibts = true //cambia a false Desactivar en "auto-reconexion" de sub-bots
 
-//Cambiar a tu idioma "es = español" - "en = inglés"
-global.lang = "es"
-global.tr = tr
+//cambia a false Desactivar en "auto-reconexion" de sub-bots
+global.gataJadibts = true 
+
+// Cambiar a false para usar el Bot desde el mismo numero del Bot.
+global.isBaileysFail = false
 
 //---------[ APIS GLOBAL ]---------
 
@@ -43,30 +44,33 @@ global.moment = moment
 
 //------------------------[ Stickers ]-----------------------------
 
-global.packname = 'LoliBot'
-global.author = 'elrebelde21'
+global.packname = '𝘽𝙊𝙇𝙄𝙇𝙇𝙊 𝘽𝙊𝙏 🥖'
+global.author = '𝙈𝙀𝙇𝘿𝙀𝙓𝙕𝙕'
 
 //------------[ Versión | Nombre | cuentas ]------------
 
-global.wm = '𝙇𝙤𝙡𝙞𝘽𝙤𝙩-𝙈𝘿' 
-global.vs = '1.9.8'
-global.yt = 'https://www.youtube.com/@elrebelde.21'
-global.tiktok = 'https://www.tiktok.com/@elrebelde.21'
-global.md = 'https://github.com/elrebelde21/LoliBot-MD'
-global.fb = 'https://www.facebook.com/elrebelde21'
-global.face = 'https://www.facebook.com/groups/872989990425789/'
+global.wm = '𝘽𝙊𝙇𝙄𝙇𝙇𝙊 𝘽𝙊𝙏 🥖' 
+global.botname = '𝘽𝙊𝙇𝙄𝙇𝙇𝙊 𝘽𝙊𝙏 🥖'
+global.vs = '1.0.0'
+global.yt = ''
+global.tiktok = ''
+global.md = ''
+global.fb = ''
+global.face = ''
 
-global.nna = 'https://whatsapp.com/channel/0029Va4QjH7DeON0ePwzjS1A' //Update
-global.nna2 = 'https://whatsapp.com/channel/0029Vau57ykEwEk5CgosvU3v' //LoliBot update
-global.nnaa = 'https://whatsapp.com/channel/0029Vae6j714Y9loutP3Au29' //LoliBot - Test
-global.nn = 'https://chat.whatsapp.com/HNDVUxHphPzG3cJHIwCaX5' //Grupo 1
-global.nnn = 'https://chat.whatsapp.com/KDBt6S54riRCIpSZspkxhg' //Grupo 2
-global.nnnt = 'https://chat.whatsapp.com/GXNXKWSEckU1j1c7sItTxK' //Grupo del Colaboracion
-global.nnntt = 'https://chat.whatsapp.com/Em4Byf4w5VgHObPvZQlfnM' //enlace lolibot
-global.nnnttt = 'https://chat.whatsapp.com/J5hQvECqR4W6uTT84uiSBx' //A.T.T.M
-global.nnntttt = 'https://chat.whatsapp.com/ILAHJeZsHh973tQ96i2aqS' //Grupo ayuda sobre el bot
-global.bot = 'wa.me/5213121663423'
-global.redes = [nna, nna2, yt, nn, nnn, nnnt, nnntt, nnnttt, nnntttt, md, tiktok, fb, face]
+global.nna = 'https://chat.whatsapp.com/Kb5X4ZB0Th10eXCu8FocoQ' //Update
+global.nna2 = 'https://chat.whatsapp.com/Kb5X4ZB0Th10eXCu8FocoQ' //LoliBot update
+global.nnaa = 'https://chat.whatsapp.com/Kb5X4ZB0Th10eXCu8FocoQ' //LoliBot - Test
+global.nn = 'https://whatsapp.com/channel/0029Va8G1nt90x2n0YHWSX3R' //Grupo 1
+global.nnn = 'https://whatsapp.com/channel/0029Va8G1nt90x2n0YHWSX3R' //Grupo 2
+global.nnnt = 'https://whatsapp.com/channel/0029Va8G1nt90x2n0YHWSX3R' //Grupo del Colaboracion
+global.nnnt2 = 'https://whatsapp.com/channel/0029Va8G1nt90x2n0YHWSX3R' // Grupo COL 2
+global.nnntt = 'https://whatsapp.com/channel/0029Va8G1nt90x2n0YHWSX3R' //Grupo COL 3
+global.nnnttt = 'https://chat.whatsapp.com/Kb5X4ZB0Th10eXCu8FocoQ' //enlace lolibot
+global.nnntttt = 'https://whatsapp.com/channel/0029Va8G1nt90x2n0YHWSX3R' //Grupo ayuda sobre el bot
+global.bot = ''
+global.asistencia = ``
+global.redes = [nna, nna2, yt, nn, nnn, nnnt, nnnttt, md, tiktok, fb, nnn, face]
 
 //------------------------[ Info | Datos ]---------------------------
 
@@ -76,47 +80,58 @@ global.waittt = '*⌛ _Cargando..._ ▬▬▬▬▭▭*'
 global.waitttt = '*⌛ _Cargando..._ ▬▬▬▬▬▬▭*'
 global.waittttt = '*⌛ _Cargando..._ ▬▬▬▬▬▬▬*'
 global.rg = '『✅ 𝙍𝙀𝙎𝙐𝙇𝙏𝘼𝘿𝙊𝙎 ✅』\n\n'
+global.resultado = rg
 global.ag = '『⚠️ 𝘼𝘿𝙑𝙀𝙍𝙏𝙀𝙉𝘾𝙄𝘼 ⚠️』\n\n'
+global.advertencia = ag
 global.iig = '『❕ 𝙄𝙉𝙁𝙊𝙍𝙈𝘼𝘾𝙄𝙊𝙉 』\n\n'
+global.informacion = iig
 global.fg = '『❌ 𝙀𝙍𝙍𝙊𝙍 ❌』\n\n'
+global.fallo = fg
 global.mg = '『❗️ 𝙇𝙊 𝙐𝙎𝙊 𝙈𝘼𝙇❗』\n\n'
+global.mal = mg
 global.eeg = '『📩 𝙍𝙀𝙋𝙊𝙍𝙏𝙀 📩』\n\n'
+global.envio = eeg
 global.eg = '『💚 𝙀𝙓𝙄𝙏𝙊𝙎 💚』\n\n'
+global.exito = eg
 
 //-------------------------[ IMAGEN ]------------------------------
 //global.img = "https://qu.ax/Zgqq.jpg"
-global.img1 = 'https://qu.ax/hNJk.jpg'
-global.img2 = 'https://qu.ax/jzhN.jpg'
+global.img1 = ''
+global.img2 = ''
 
 global.imagen = fs.readFileSync('./Menu2.jpg')
 global.imagen1 = fs.readFileSync('./media/Menu1.jpg')
 global.imagen2 = fs.readFileSync('./media/Menu2.jpg')
 global.imagen3 = fs.readFileSync('./media/Menu3.jpg')
 global.imagen4 = fs.readFileSync('./media/Menu4.jpg')
-global.imagen5 = 'https://qu.ax/rULv.jpg'
-global.imagen6 = 'https://qu.ax/CySs.jpg'
-global.menu18 = 'https://qu.ax/MOgO.jpg'
-global.vid1 = 'https://qu.ax/dcAc.mp4'
+global.imagen5 = ''
+global.imagen6 = ''
+global.menu18 = ''
+global.vid1 = ''
 global.img = [imagen, imagen1, imagen2, imagen3, imagen4]
-global.imageUrl = ["https://qu.ax/HJnWj.jpg", "https://qu.ax/ehPzQ.jpg", "https://qu.ax/ilfbC.jpg"]
+global.imageUrl = ["", "", ""]
 
 //----------------------------[ NIVELES | RPG ]---------------------------------
 
 global.multiplier = 850 // Cuanto más alto, más difícil subir de nivel
 global.maxwarn = '4' // máxima advertencias
 
+//━━━━━━━━━━━━━━━━━━━━ ฅ^•ﻌ•^ฅ
+
+global.rwait = '⌛'
+global.dmoji = '🤭'
+global.done = '✅'
+global.error = '❌' 
+global.xmoji = '🔥' 
+
 //---------------[ IDs de canales ]----------------
 
 global.ch = {
-ch1: '120363297379773397@newsletter', 
-ch2: '120363355261011910@newsletter', 
-ch3: '120363160031023229@newsletter',
-ch4: '120363301598733462@newsletter',
-ch5: '120363374372683775@newsletter', 
-ch6: '120363388040813284@newsletter',
-ch7: '120363419483367014@newsletter',  
-ch8: '120363397276648807@newsletter',
-ch9: '120363343811229130@newsletter',
+ch1: '120363190400869019@newsletter', 
+ch2: '120363190400869019@newsletter', 
+ch3: '120363190400869019@newsletter',
+ch4: '120363190400869019@newsletter',
+ch5: '120363190400869019@newsletter', 
 }
 
 //----------------------------------------------------
