@@ -597,7 +597,7 @@ await m.reply(`*${isEnable ? '✅️' : '❌️'} ${await tr("La opción")} ${ty
 handler.help = ['en', 'dis'].map(v => v + 'able <option>')
 handler.tags = ['nable']
 handler.command = /^((en|dis)able|(tru|fals)e|(turn)?o(n|ff))$/i
-handler.register = false
+handler.register = true
 export default handler;
 
 const more = String.fromCharCode(8206)
